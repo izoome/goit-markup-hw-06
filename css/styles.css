@@ -74,6 +74,18 @@ body {
   padding-bottom: 94px;
   padding-top: 94px;
 }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
 /* /* ----------Header----------- */
 .header {
   border-bottom: #ececec solid 1px;
@@ -201,6 +213,7 @@ body {
   width: 216px;
   height: 50px;
   transition: var(--transfotm-cubic), var(--transition-bg);
+  position: relative;
 }
 
 .hero {
@@ -505,6 +518,55 @@ body {
   text-transform: uppercase;
   color: #ffffff;
 }
+.foot-subscribe {
+  margin-left: auto;
+}
+.foot-title {
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--primary-bg-color);
+  margin-bottom: 20px;
+}
+.foot-form {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+  row-gap: 20px;
+}
+.foot-input {
+  width: 358px;
+  height: 50px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 15px 16px;
+  background-color: transparent;
+  outline: none;
+  transition: border-color 250ms var(--cubic);
+}
+
+.foot-input:hover,
+.foot-input:focus {
+  border-color: var(--primary-bg-color);
+}
+.foot-btn {
+  position: relative;
+  text-align: left;
+  padding: 10px 28px;
+}
+.foot-icon-send {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 /*----------Portfolio-----------*/
 .benefits-pre-list {
   display: flex;
@@ -622,21 +684,24 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 1);
-
   box-shadow: var(--shadow-team-item);
   transition: var(--transfotm-cubic);
 }
-.modal-btn {
+.close-btn {
   position: absolute;
   right: 8px;
   top: 8px;
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid #757575;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.close-btn:hover,
+.close-btn:focus {
+  fill: var(--btn);
+  cursor: pointer;
 }
 
 .is-hidden {
@@ -644,6 +709,125 @@ body {
   opacity: 0;
   pointer-events: none;
 }
-.modal-close-icon {
-  display: flex;
+
+.overline.is-hidden .modal {
+  transform: translate(-50%, -165%) scale(0);
+}
+.overline-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: var(--color-first-title);
+  margin-bottom: 12px;
+}
+.overline-form {
+  padding: 40px;
+}
+.form-label {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.167;
+  letter-spacing: 0.01em;
+  color: var(--icon-color);
+  margin-bottom: 4px;
+}
+.form-item {
+  height: 40px;
+  width: 100%;
+  padding: 12px 12px 12px 42px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  transition: border 250ms var(--cubic);
+  color: inherit;
+}
+
+.form-item.form-text {
+  height: 120px;
+  padding: 12px 16px;
+  resize: none;
+}
+
+.modal-btn:focus,
+.policy-link:focus {
+  outline: 1px solid var(--btn);
+}
+
+.form-item:focus,
+.form-item:hover {
+  outline: transparent;
+  border: 1px solid var(--btn);
+}
+
+.policy-dial {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  color: var(--icon-color);
+}
+
+.policy-link {
+  color: var(--btn);
+  text-decoration: underline;
+}
+
+.modal-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.form-item-box {
+  margin-bottom: 10px;
+}
+
+.form-imput-content {
+  position: relative;
+}
+.form-item-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  fill: #212121;
+  transition: fill 250ms var(--cubic);
+}
+
+.form-item:hover + .form-item-icon,
+.form-item:focus + .form-item-icon {
+  fill: var(--btn);
+}
+
+.form-text-box {
+  margin-bottom: 20px;
+}
+
+.box-policy {
+  padding-left: 12px;
+  margin-bottom: 30px;
+}
+
+.box-policy-svg {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 7px;
+  min-height: 15px;
+  min-width: 16px;
+  border: 2px solid rgba(33, 33, 33, 0.2);
+  border-radius: 2px;
+  transition: background-color 250ms var(--cubic);
+}
+
+.check:checked + .policy-dial .box-policy-svg {
+  background-color: var(--btn);
+  border-color: transparent;
+}
+
+.check:focus + .policy-dial .box-policy-svg {
+  border-color: var(--btn);
 }
